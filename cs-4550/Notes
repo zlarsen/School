@@ -1,0 +1,67 @@
+Non Virtual -> Sub Classes should not override
+Virtual -> Sub Class can Override
+Pure Virtual -> Sub Class must Override.
+  In parent class Virtual void draw() = 0;
+
+1/14/15
+// Avoid Dynamic memory!!! (unless you really need it!)
+#include <iostream>
+using namespace std;
+class robust
+{
+public:
+  robust()
+  {
+    x = NULL;
+  }
+  ~robust()
+  {
+    if (x)
+    {
+      delete []x;
+    }
+  }
+  void SetSize(int num)
+  {
+    if (x)
+    {
+      delete []x;
+      x = NULL;
+    }
+    if(num<=0)
+      return;
+
+    x = new int[num];
+  }
+private:
+  int *x;
+};
+
+int main()
+{
+  cout << "How many integers do you really need? ";
+  int num;
+  cin >> num;
+  robust r;
+  r.SetSize(num);
+
+  return 0;
+}
+
+bits type
+1 char
+2 short int
+4 long int
+(4) int
+8 int int
+4 float
+8 double
+  char *
+  int *
+  double *
+
+Homework....
+
+3a
+
+S -> aSa|bSb|...|zSz|a|b|c|.....|z|LAMBDA|
