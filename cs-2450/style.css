@@ -1,0 +1,79 @@
+body {
+  background-color: #eee;
+  color: #eee;
+}
+
+#container {
+  margin: auto;
+  width: 80%;
+  min-width: 800px;
+}
+
+#logo {
+  height: 100px;
+  width: 500px;
+  float: left;
+}
+
+#header {
+  height: 100px;
+  width: 100%;
+  background-color: #1491CC;
+  font-size: 25px;
+}
+
+#header-right {
+  height: 100px;
+  width: 200px;
+  float: right;
+}
+
+#header-links {
+  float: right;
+}
+#header-text {
+  float: right;
+  margin: 5px;
+}
+
+.header-logo {
+  height: 50px;
+  width: 50px;
+  margin-top: 5px;
+  margin-right: 5px;
+  float: right;
+}
+#div2 {
+  background-color: ff00cc;
+  height: 30px;
+  width: 250px;
+  text-align: center;
+}
+
+#div {
+  background-color: 0000cc;
+  height: 30px;
+  width: 250px;
+  text-align: center;
+}
+
+/*h6 {
+  font-size: 400px;
+}*/
+
+a {
+  color: #eee;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+a:hover {
+  color:pink;
+}
+
+#game1 {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #00FFC7;
+  height: 400px;
+}
