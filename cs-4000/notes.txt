@@ -1,0 +1,4 @@
+Node.js/NPM
+Express/Generator
+Jade
+MongoDB

@@ -1,0 +1,54 @@
+CRN - Class
+45225 - Econ
+48069 - Art
+48059 - iOS dev
+47529 - Comp theory
+40950 - AI
+48203 - Languages
+
+2014
+
+50 pts write a grammar that produces all sequences of positive integers that are multiples of 3. There should not be leading zeros. Remember that a number is divisible by 3 is the sum of its digits is divisible by 3. HINT: You don't actually have to sum the digits - just keep track of: sum%3.
+
+50 pts Draw a finite automata that recognizes the legal strings of the previous question.
+
+2013
+
+Write a grammer that produces all sequences of positive integers that are multiples of 25, such as 75, 125, 3000, 2301050, etc. There should not be leading zeros.
+
+Draw a finite automata that recognizes the legal strings the previous question.
+
+Add Do-While statements
+do
+  <block>
+while (expression) ;
+
+
+2450 test
+  Coding
+  IDE have debugger - TEXT EDITOR one purpose
+
+  Comments
+  Indentation
+  Variable Names
+  Tracability
+  Avoid Pointers
+  Avoid Arrays
+  Type Check
+  Reusable
+  DRY
+
+  Testing
+
+    White box: you can see the code
+    Black box: You have no idea what is going on, just the output
+    Grey box: you are pretty sure you know what is going on
+    Oracle: Tests all the code at night
+    Mothra: Check for deviants, and if they don't break the code then it fails the test
+    Code Review: some one reviews your code
+    Acceptance: Let the customer review it
+    Destructive: Just let it go
+    UX: Feedback from users
+    Alpha|Beta|Gold: Programmer|User|Actual
+    Stress: Try with a lot of people
+    Smoke: Where the code is being used the most?
