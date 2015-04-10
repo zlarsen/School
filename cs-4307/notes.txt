@@ -1,0 +1,1 @@
+I need to read up more on how to copy files from a remote server using scp or ssh.
