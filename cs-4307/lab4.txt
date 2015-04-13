@@ -1,0 +1,275 @@
+mysql> source ../scripts/lab4.sql
+Database changed
+--------------
+SELECT
+ t.title_id,
+ t.title_name,
+ a.au_lname
+FROM 
+ title_authors as ta
+JOIN
+ titles as t
+  on ta.title_id = t.title_id
+JOIN
+ authors as a
+  on ta.au_id = a.au_id
+WHERE
+ au_order = 1
+--------------
+
++----------+-------------------------------------+-----------+
+| title_id | title_name                          | au_lname  |
++----------+-------------------------------------+-----------+
+| T01      | 1977!                               | Buchman   |
+| T02      | 200 Years of German Humor           | Buchman   |
+| T03      | Ask Your System Administrator       | Kells     |
+| T04      | But I Did It Unconsciously          | Hull      |
+| T05      | Exchange of Platitudes              | Hull      |
+| T06      | How About Never?                    | Heydemark |
+| T07      | I Blame My Mother                   | Heydemark |
+| T08      | Just Wait Until After School        | Kellsey   |
+| T09      | Kiss My Boo-Boo                     | Kellsey   |
+| T10      | Not Without My Faberge Egg          | Heydemark |
+| T11      | Perhaps It's a Glandular Problem    | Kellsey   |
+| T12      | Spontaneous, Not Annoying           | Heydemark |
+| T13      | What Are The Civilian Applications? | Buchman   |
++----------+-------------------------------------+-----------+
+13 rows in set (0.00 sec)
+
+--------------
+SELECT
+ title_id,
+ title_name,
+ publishers.pub_id
+ pub_name
+FROM
+ titles,
+ publishers
+WHERE
+ (titles.pub_id = publishers.pub_id)
+ORDER BY
+ publishers.pub_id,
+ title_name
+--------------
+
++----------+-------------------------------------+----------+
+| title_id | title_name                          | pub_name |
++----------+-------------------------------------+----------+
+| T01      | 1977!                               | P01      |
+| T06      | How About Never?                    | P01      |
+| T10      | Not Without My Faberge Egg          | P01      |
+| T12      | Spontaneous, Not Annoying           | P01      |
+| T03      | Ask Your System Administrator       | P02      |
+| T02      | 200 Years of German Humor           | P03      |
+| T07      | I Blame My Mother                   | P03      |
+| T13      | What Are The Civilian Applications? | P03      |
+| T04      | But I Did It Unconsciously          | P04      |
+| T05      | Exchange of Platitudes              | P04      |
+| T08      | Just Wait Until After School        | P04      |
+| T09      | Kiss My Boo-Boo                     | P04      |
+| T11      | Perhaps It's a Glandular Problem    | P04      |
++----------+-------------------------------------+----------+
+13 rows in set (0.00 sec)
+
+--------------
+SELECT
+ title_id,
+ title_name,
+ publishers.pub_id,
+ pub_name
+FROM
+ titles,
+ publishers
+WHERE
+ (titles.pub_id = publishers.pub_id AND state = 'CA')
+ORDER BY
+ publishers.pub_id,
+ title_name
+--------------
+
++----------+----------------------------------+--------+-------------------+
+| title_id | title_name                       | pub_id | pub_name          |
++----------+----------------------------------+--------+-------------------+
+| T03      | Ask Your System Administrator    | P02    | Core Dump Books   |
+| T04      | But I Did It Unconsciously       | P04    | Tenterhooks Press |
+| T05      | Exchange of Platitudes           | P04    | Tenterhooks Press |
+| T08      | Just Wait Until After School     | P04    | Tenterhooks Press |
+| T09      | Kiss My Boo-Boo                  | P04    | Tenterhooks Press |
+| T11      | Perhaps It's a Glandular Problem | P04    | Tenterhooks Press |
++----------+----------------------------------+--------+-------------------+
+6 rows in set (0.00 sec)
+
+--------------
+SELECT
+ type,
+ COUNT(type) as 'Number'
+FROM
+ titles,
+ publishers
+WHERE
+ (titles.pub_id = publishers.pub_id AND state = 'CA')
+GROUP BY
+ type
+--------------
+
++------------+--------+
+| type       | Number |
++------------+--------+
+| children   |      2 |
+| computer   |      1 |
+| psychology |      3 |
++------------+--------+
+3 rows in set (0.00 sec)
+
+--------------
+SELECT
+ count(emp_id) as '# Employees',
+ SUM(sales) as 'Total Sales'
+FROM
+ empsales
+--------------
+
++-------------+-------------+
+| # Employees | Total Sales |
++-------------+-------------+
+|          10 |        5900 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT
+ count(em.emp_id) as '# Employees',
+ SUM(sales) as 'Total Sales'
+FROM
+ empsales as em
+LEFT JOIN
+ employees as e
+  on em.emp_id = e.emp_id
+--------------
+
++-------------+-------------+
+| # Employees | Total Sales |
++-------------+-------------+
+|          10 |        5900 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT
+ em.emp_id,
+ emp_name,
+ sales
+FROM
+ empsales as em
+LEFT JOIN
+ employees as e
+  on em.emp_id = e.emp_id
+--------------
+
++--------+-------------------+-------+
+| emp_id | emp_name          | sales |
++--------+-------------------+-------+
+| E01    | Lord Copper       |   600 |
+| E02    | Jocelyn Hitchcock |   800 |
+| E03    | Mr. Salter        |   500 |
+| E04    | William Boot      |   500 |
+| E05    | Mr. Corker        |   700 |
+| E06    | NULL              |   500 |
+| E07    | NULL              |   300 |
+| E08    | NULL              |   400 |
+| E09    | NULL              |   900 |
+| E10    | NULL              |   700 |
++--------+-------------------+-------+
+10 rows in set (0.00 sec)
+
+--------------
+SELECT
+ em.emp_id,
+ emp_name,
+ sales
+FROM
+ employees as e
+LEFT JOIN
+ empsales as em
+  on em.emp_id = e.emp_id
+--------------
+
++--------+-------------------+-------+
+| emp_id | emp_name          | sales |
++--------+-------------------+-------+
+| E01    | Lord Copper       |   600 |
+| E02    | Jocelyn Hitchcock |   800 |
+| E03    | Mr. Salter        |   500 |
+| E04    | William Boot      |   500 |
+| E05    | Mr. Corker        |   700 |
++--------+-------------------+-------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT
+ em.emp_id,
+ emp_name,
+ sales
+FROM
+ empsales as em
+ LEFT JOIN employees as e
+  on em.emp_id = e.emp_id
+UNION
+
+SELECT
+ em.emp_id,
+ emp_name,
+ sales
+FROM
+ empsales as em
+ RIGHT JOIN employees as e
+  on em.emp_id = e.emp_id
+--------------
+
++--------+-------------------+-------+
+| emp_id | emp_name          | sales |
++--------+-------------------+-------+
+| E01    | Lord Copper       |   600 |
+| E02    | Jocelyn Hitchcock |   800 |
+| E03    | Mr. Salter        |   500 |
+| E04    | William Boot      |   500 |
+| E05    | Mr. Corker        |   700 |
+| E06    | NULL              |   500 |
+| E07    | NULL              |   300 |
+| E08    | NULL              |   400 |
+| E09    | NULL              |   900 |
+| E10    | NULL              |   700 |
++--------+-------------------+-------+
+10 rows in set (0.00 sec)
+
+--------------
+SELECT
+ e.emp_id,
+ e.emp_name,
+ h.boss_id,
+ b.emp_name
+ FROM hier h
+ LEFT JOIN employees e
+  on h.emp_id = e.emp_id
+ LEFT JOIN employees b
+  on h.boss_id = b.emp_id
+--------------
+
++--------+-------------------+---------+-------------------+
+| emp_id | emp_name          | boss_id | emp_name          |
++--------+-------------------+---------+-------------------+
+| E01    | Lord Copper       | NULL    | NULL              |
+| E02    | Jocelyn Hitchcock | E01     | Lord Copper       |
+| E03    | Mr. Salter        | E01     | Lord Copper       |
+| E04    | William Boot      | E02     | Jocelyn Hitchcock |
+| E05    | Mr. Corker        | E02     | Jocelyn Hitchcock |
+| NULL   | NULL              | E03     | Mr. Salter        |
+| NULL   | NULL              | E04     | William Boot      |
+| NULL   | NULL              | E04     | William Boot      |
+| NULL   | NULL              | E04     | William Boot      |
+| NULL   | NULL              | E06     | NULL              |
+| NULL   | NULL              | E06     | NULL              |
++--------+-------------------+---------+-------------------+
+11 rows in set (0.00 sec)
+
+mysql> quit

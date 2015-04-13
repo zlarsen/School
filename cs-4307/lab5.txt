@@ -1,0 +1,147 @@
+mysql> source ../scripts/lab5.sql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+--------------
+SELECT 
+ j.jid
+FROM 
+j
+JOIN
+ spj
+  on j.jid = spj.jid
+JOIN 
+ s
+ on spj.sid = s.sid
+WHERE 
+ s.city = "London"
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J3   |
+| J7   |
++------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT 
+ j.jid
+FROM 
+j
+JOIN
+ spj
+  on j.jid = spj.jid
+JOIN 
+ s
+  on spj.sid = s.sid
+WHERE 
+ s.city IN
+ (SELECT city FROM s WHERE city = "London")
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J3   |
+| J7   |
++------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT
+ j.jid
+FROM 
+ j
+JOIN
+ spj
+  on j.jid = spj.jid
+JOIN 
+ p
+ on spj.pid = p.pid
+WHERE 
+ p.color = "Red"
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J2   |
+| J3   |
+| J7   |
++------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT
+ j.jid
+FROM 
+ j
+JOIN
+ spj
+  on j.jid = spj.jid
+JOIN 
+ p
+ on spj.pid = p.pid
+WHERE 
+ p.color IN
+ (SELECT color FROM p WHERE p.color = "Red")
+--------------
+
++------+
+| jid  |
++------+
+| J1   |
+| J4   |
+| J2   |
+| J3   |
+| J7   |
++------+
+5 rows in set (0.00 sec)
+
+--------------
+parts.
+SELECT
+ jid,
+ pid,
+ sid,
+ qty
+FROM
+ spj
+WHERE
+ spj.qty > (SELECT  avg(qty) FROM spj)
+--------------
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'parts.
+SELECT
+ jid,
+ pid,
+ sid,
+ qty
+FROM
+ spj
+WHERE
+ spj.qty > (SELECT  avg(qty' at line 1
+--------------
+SELECT DISTINCT sid
+ FROM spj
+ WHERE
+ sid = "s5"
+--------------
+
++------+
+| sid  |
++------+
+| S5   |
++------+
+1 row in set (0.04 sec)
+
+mysql> quit

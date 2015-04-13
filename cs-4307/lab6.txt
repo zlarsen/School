@@ -1,0 +1,112 @@
+mysql> source scripts/lab6.sql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+--------------
+SELECT DISTINCT 
+ city 
+FROM 
+ s
+UNION SELECT
+ city
+FROM
+ j
+--------------
+
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Athens |
+| Rome   |
+| Oslo   |
++--------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT 
+ city 
+FROM 
+ s
+UNION SELECT
+ city
+FROM
+ j
+UNION SELECT
+ city
+FROM
+ p
+--------------
+
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Athens |
+| Rome   |
+| Oslo   |
++--------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT 
+ city 
+FROM 
+ s
+INNER JOIN j
+USING  (city)
+--------------
+
++--------+
+| city   |
++--------+
+| Paris  |
+| Athens |
+| London |
++--------+
+3 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT 
+ city 
+FROM 
+ s
+INNER JOIN j
+USING (city)
+INNER JOIN p
+USING (city)
+--------------
+
++--------+
+| city   |
++--------+
+| Paris  |
+| London |
++--------+
+2 rows in set (0.00 sec)
+
+--------------
+SELECT DISTINCT 
+ city 
+FROM 
+ s
+WHERE NOT EXISTS (SELECT city from p WHERE s.city = p.city)
+UNION SELECT
+ city
+FROM
+ j
+WHERE NOT EXISTS (SELECT city FROM p WHERE j.city = p.city)
+--------------
+
++--------+
+| city   |
++--------+
+| Athens |
+| Oslo   |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> quit

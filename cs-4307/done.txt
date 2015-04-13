@@ -1,0 +1,4 @@
+mysql> source ../scripts/sql5.sql
+ERROR: 
+Failed to open file '../scripts/sql5.sql', error: 2
+mysql> quit

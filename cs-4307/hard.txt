@@ -1,0 +1,117 @@
+mysql> source scripts/hard.sql
+Database changed
+--------------
+drop table if exists TaxAreaAuthority
+--------------
+
+Query OK, 0 rows affected (0.12 sec)
+
+--------------
+create table TaxAreaAuthority (
+ tid int(3) NOT NULL AUTO_INCREMENT,
+ TaxAuthority varchar(30),
+ TaxArea varchar(30),
+ PRIMARY KEY (tid)
+)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+drop table if exists TaxRates
+--------------
+
+Query OK, 0 rows affected (0.06 sec)
+
+--------------
+create table TaxRates (
+ tid int(3) NOT NULL AUTO_INCREMENT,
+ TaxAuthority varchar(30),
+ Effective date,
+ AuthTaxRate float(2),
+ PRIMARY KEY (tid)
+)
+--------------
+
+Query OK, 0 rows affected (0.02 sec)
+
+--------------
+insert into TaxAreaAuthority (TaxAuthority, TaxArea) Values
+ ("city1", "city1"),
+ ("city2", "city2"),
+ ("city3", "city3"),
+ ("county1", "city1"),
+ ("county1", "city2"),
+ ("county2", "city3"),
+ ("state1", "city1"),
+ ("state1", "city2"),
+ ("state1", "city3")
+--------------
+
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+--------------
+insert into TaxRates (TaxAuthority, Effective, AuthTaxRate) Values
+ ("city1", "1993-01-01", 1.0),
+ ("city1", "1994-01-01", 1.5),
+ ("city2", "1993-09-01", 1.5),
+ ("city2", "1994-01-01", 2.0),
+ ("city2", "1995-01-01", 2.5),
+ ("city3", "1993-01-01", 1.9),
+ ("city3", "1993-07-01", 2.3),
+ ("county1", "1993-01-01", 2.3),
+ ("county1", "1994-10-01", 2.5),
+ ("county1", "1995-01-01", 2.7),
+ ("county2", "1993-01-01", 2.4),
+ ("county2", "1994-01-01", 2.7),
+ ("county2", "1995-01-01", 2.8),
+ ("state1", "1993-01-01", 0.5),
+ ("state1", "1994-01-01", 0.8),
+ ("state1", "1994-07-01", 0.9),
+ ("state1", "1994-10-01", 1.1)
+--------------
+
+Query OK, 17 rows affected (0.00 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+--------------
+Select TaxAuthority From TaxAreaAuthority Where TaxArea = "city2" and TaxAuthority like "county%"
+--------------
+
++--------------+
+| TaxAuthority |
++--------------+
+| county1      |
++--------------+
+1 row in set (0.00 sec)
+
+--------------
+Select TaxAuthority From TaxAreaAuthority Where TaxArea = "city2" and TaxAuthority like "state%"
+--------------
+
++--------------+
+| TaxAuthority |
++--------------+
+| state1       |
++--------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT SUM(AuthTaxRate) as "Total Tax Rate"
+FROM   TaxRates NATURAL JOIN (
+  SELECT   TaxAuthority, MAX(Effective) Effective
+  FROM     TaxRates JOIN TaxAreaAuthority USING (TaxAuthority)
+  WHERE    TaxArea = 'city2' AND Effective <= '1994-11-01'
+  GROUP BY TaxAuthority
+) t
+--------------
+
++-------------------+
+| Total Tax Rate    |
++-------------------+
+| 5.600000023841858 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> quit

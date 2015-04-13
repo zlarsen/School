@@ -1,0 +1,11 @@
+use books;
+SHOW TABLES;
+SELECT * FROM authors;
+SELECT emp_id, emp_name FROM employees;
+SELECT distinct state FROM publishers;
+SELECT title_id, title_name, price FROM titles ORDER BY price DESC;
+SELECT title_id, title_name FROM titles WHERE (type = "children");
+SELECT title_id, title_name FROM titles WHERE (type != "history" AND type != "biography");
+SELECT au_id, au_fname, au_lname, phone FROM authors WHERE phone LIKE "%549%";
+SELECT au_id, au_fname, au_lname, zip FROM authors WHERE (zip > 90000 AND zip < 99999);
+SELECT au_id, au_fname, au_lname, state FROM authors WHERE (state = "NY" OR state = "CA");

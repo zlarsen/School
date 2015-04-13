@@ -1,0 +1,144 @@
+mysql> source ../scripts/lab3.sql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+--------------
+SELECT ROUND(AVG(price), 2) as "Average Price" FROM titles
+--------------
+
++---------------+
+| Average Price |
++---------------+
+|         18.39 |
++---------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT COUNT(title_name) as "Qty" FROM titles
+--------------
+
++-----+
+| Qty |
++-----+
+|  13 |
++-----+
+1 row in set (0.00 sec)
+
+--------------
+SELECT ROUND(SUM(sales * price), 2) as "Volume" FROM titles
+--------------
+
++-------------+
+| Volume      |
++-------------+
+| 41428860.77 |
++-------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT type,
+ROUND(AVG(pages),0) as "Average Pages" FROM titles GROUP BY type
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| biography  |           438 |
+| children   |            54 |
+| computer   |          1226 |
+| history    |           308 |
+| psychology |           512 |
++------------+---------------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT type,
+ROUND(AVG(pages),0) as "Average Pages" FROM titles GROUP BY type 
+HAVING avg(pages) > 500
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| computer   |          1226 |
+| psychology |           512 |
++------------+---------------+
+2 rows in set (0.02 sec)
+
+--------------
+SELECT type,
+ROUND(AVG(pages),0) as "Average Pages" FROM titles GROUP BY type
+HAVING avg(pages) > 500 ORDER BY avg(pages) ASC
+--------------
+
++------------+---------------+
+| type       | Average Pages |
++------------+---------------+
+| psychology |           512 |
+| computer   |          1226 |
++------------+---------------+
+2 rows in set (0.00 sec)
+
+--------------
+SELECT count(DISTINCT state) as "Number of States" FROM authors
+--------------
+
++------------------+
+| Number of States |
++------------------+
+|                4 |
++------------------+
+1 row in set (0.00 sec)
+
+--------------
+SELECT state,
+count(*) as "# of Authors"
+FROM authors
+GROUP BY state
+--------------
+
++-------+--------------+
+| state | # of Authors |
++-------+--------------+
+| CA    |            3 |
+| CO    |            1 |
+| FL    |            1 |
+| NY    |            2 |
++-------+--------------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT type,
+count(*) as "# of books"
+FROM titles
+GROUP BY type HAVING type != "children"
+--------------
+
++------------+------------+
+| type       | # of books |
++------------+------------+
+| biography  |          4 |
+| computer   |          1 |
+| history    |          3 |
+| psychology |          3 |
++------------+------------+
+4 rows in set (0.00 sec)
+
+--------------
+SELECT type,
+count(*) as "# of books"
+FROM titles
+GROUP BY type HAVING (type != "children" AND count(*) >= 3) ORDER BY type ASC
+--------------
+
++------------+------------+
+| type       | # of books |
++------------+------------+
+| biography  |          4 |
+| history    |          3 |
+| psychology |          3 |
++------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> quit
