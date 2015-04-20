@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    h1.
+        Teacher ID ##{teacher._id}
+    a(href='/teachers/new') New
+    br
+    a(href='/teachers/') Index
+    form(action='/teachers/#{teacher._id}/edit',method='post',name='updateteacher',enctype='application/x-www-form-urlencoded')
+        p Name: 
+            input#inputName(type='text', value='#{teacher.name}', name='name')
+        p Badge: 
+            input#inputBadge(type='number', value='#{teacher.badge}', name='badge')
+        p DOB: 
+            input#inputDob(type='date', value='#{teacherdob}', name='dob')
+        p Are you Sexy?: 
+            input#inputSexy(type='checkbox', name='sexy', checked=('#{teacher.sexy}'==='true' ? "checked" : undefined))
+        p 
+            input(type='hidden',value='PUT',name='_method')
+        p 
+            button#btnSubmit(type='submit').
+                Update

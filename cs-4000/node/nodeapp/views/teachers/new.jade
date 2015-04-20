@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    a(href='/teachers/new') New
+    br
+    a(href='/teachers/') Index
+    form#formAddTeacher(name="addteacher",method="post",action="/teachers")
+        p Name: 
+            input#inputName(type="text", placeholder="ex. John Smith", name="name")
+        p Badge:
+            input#inputBadge(type="number", placeholder="ex. 123456", name="badge")
+        p DOB: 
+            input#inputDob(type="date", name="dob")
+        p Are You Sexy?: 
+            input#inputSexy(type="checkbox", name="sexy")
+        p
+            button#btnSubmit(type="submit") submit

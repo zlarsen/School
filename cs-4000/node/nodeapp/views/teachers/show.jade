@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1.
+        Teacher ##{teacher._id}
+    a(href='/teachers/new') New
+    br
+    a(href='/teachers/') Index
+    p Name: #{teacher.name}
+    p Badge: #{teacher.badge}
+    p DOB: #{teacherdob}
+    p Are you Sexy: #{teacher.sexy}
