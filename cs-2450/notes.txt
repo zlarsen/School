@@ -1,0 +1,6 @@
+Five steps in the Programing process
+1. Plan
+2. Design
+3. Code
+4. Test
+5. Implement
