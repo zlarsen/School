@@ -3,3 +3,33 @@ Express/Generator
 Jade
 MongoDB
 Mongoose
+
+
+### Final
+
+*Use Classroom computer
+*Practical Exam
+*50% PHP fundamentals
+*50% Frameworks
+
+#### Resources
+*Everything
+
+
+### Review
+
+#### Slim
+
+*slimframework.com
+*`mkdir slim-exam`
+*`curl -sS https://getcomposer.org/installer | php`
+* Inside of slim-exam `php composer.phar require slim/slim`
+* vim index.php
+* paste in <?php
+require 'vendor/autoload.php';
+$app = new \Slim\Slim();
+$app->get('/hello/:name', function ($name) {
+    echo "Hello, $name";
+});
+$app->run();
+?>

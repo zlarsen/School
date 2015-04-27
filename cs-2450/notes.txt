@@ -4,3 +4,9 @@ Five steps in the Programing process
 3. Code
 4. Test
 5. Implement
+
+Acceptance Testing - Client accepts it
+Mothra Testing - If you can change the code and it still works
+Stress Testing - Pushing the code to its limits
+
+	
