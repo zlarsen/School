@@ -23,3 +23,9 @@ void DeclarationStatementNode::Interpret() {
     MSG("DeclarationStatementNode interpret");
     mIdentifierNode->DeclareVariable();
 }
+
+void DeclarationStatementNode::Code(InstructionsClass &machineCode)
+{
+    MSG("DeclarationStatementNode Code");
+    mIdentifierNode->DeclareVariable();
+}

@@ -35,6 +35,8 @@
 		92CEE7D21AD585FD00BCFE99 /* NotNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92CEE7D11AD585FD00BCFE99 /* NotNode.cpp */; };
 		92CEE7D41AD586A400BCFE99 /* WhileStatementNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92CEE7D31AD586A400BCFE99 /* WhileStatementNode.cpp */; };
 		92CEE7D61AD5CADB00BCFE99 /* RepeatStatementNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92CEE7D51AD5CADB00BCFE99 /* RepeatStatementNode.cpp */; };
+		92FB7F941AEED41B00A06858 /* PlusEqualNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */; };
+		92FB7F961AEEDA5600A06858 /* MinusEqualNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +91,8 @@
 		92CEE7D11AD585FD00BCFE99 /* NotNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotNode.cpp; path = Compiler/Nodes/NotNode.cpp; sourceTree = "<group>"; };
 		92CEE7D31AD586A400BCFE99 /* WhileStatementNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WhileStatementNode.cpp; path = Compiler/Nodes/WhileStatementNode.cpp; sourceTree = "<group>"; };
 		92CEE7D51AD5CADB00BCFE99 /* RepeatStatementNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatStatementNode.cpp; path = Compiler/Nodes/RepeatStatementNode.cpp; sourceTree = "<group>"; };
+		92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlusEqualNode.cpp; path = Compiler/Nodes/PlusEqualNode.cpp; sourceTree = "<group>"; };
+		92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MinusEqualNode.cpp; path = Compiler/Nodes/MinusEqualNode.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				92CEE7D51AD5CADB00BCFE99 /* RepeatStatementNode.cpp */,
 				92CEE7C81ACC7ED000BCFE99 /* StatementNode.cpp */,
 				92CEE7CA1ACC7F0B00BCFE99 /* TimesNode.cpp */,
+				92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */,
+				92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */,
 				92CEE7AC1ACC602F00BCFE99 /* AssignmentStatementNode.cpp */,
 				9229659A1A79921A008F2CAD /* Compiler */,
 				922965991A79921A008F2CAD /* Products */,
@@ -220,11 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				92CEE7BF1ACC7CC000BCFE99 /* MinusNode.cpp in Sources */,
+				92FB7F941AEED41B00A06858 /* PlusEqualNode.cpp in Sources */,
 				9229659C1A79921A008F2CAD /* main.cpp in Sources */,
 				922965A41A799261008F2CAD /* Token.cpp in Sources */,
 				92CEE7BB1ACC7C3700BCFE99 /* IdentifierNode.cpp in Sources */,
 				92AA7A511A895AED000D6702 /* Scanner.cpp in Sources */,
 				92CEE7AD1ACC602F00BCFE99 /* AssignmentStatementNode.cpp in Sources */,
+				92FB7F961AEEDA5600A06858 /* MinusEqualNode.cpp in Sources */,
 				922B68331AA50C3C00F747AD /* Node.cpp in Sources */,
 				92AA7A4E1A802274000D6702 /* StateMachine.cpp in Sources */,
 				92CEE7B31ACC796C00BCFE99 /* CoutStatementNode.cpp in Sources */,

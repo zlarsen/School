@@ -109,6 +109,7 @@ public:
     DeclarationStatementNode(IdentifierNode *identifierNode);
     ~DeclarationStatementNode();
     void Interpret();
+    void Code(InstructionsClass &machineCode);
 private:
     IdentifierNode *mIdentifierNode;
 };
@@ -118,6 +119,7 @@ public:
     AssignmentStatementNode(IdentifierNode *identifierNode, ExpressionNode *expressionNode);
     ~AssignmentStatementNode();
     void Interpret();
+    void Code(InstructionsClass &machineCode);
 private:
     IdentifierNode *mIdentifierNode;
     ExpressionNode *mExpressionNode;
@@ -128,6 +130,7 @@ public:
     CoutStatementNode(ExpressionNode *expressionNode);
     ~CoutStatementNode();
     void Interpret();
+    void Code(InstructionsClass &machineCode);
 private:
     ExpressionNode *mExpressionNode;
 };
@@ -313,5 +316,25 @@ public:
 private:
 };
 
+class PlusEqualNode: public AssignmentStatementNode {
+public:
+    PlusEqualNode(IdentifierNode *identifierNode, ExpressionNode *expressionNode);
+    ~PlusEqualNode();
+    void Interpret();
+    void Code(InstructionsClass &machineCode);
+private:
+    IdentifierNode *mIdentifierNode;
+    ExpressionNode *mExpressionNode;
+};
 
+class MinusEqualNode: public AssignmentStatementNode {
+public:
+    MinusEqualNode(IdentifierNode *identifierNode, ExpressionNode *expressionNode);
+    ~MinusEqualNode();
+    void Interpret();
+    void Code(InstructionsClass &machineCode);
+private:
+    IdentifierNode *mIdentifierNode;
+    ExpressionNode *mExpressionNode;
+};
 #endif /* defined(__Compiler__Node__) */

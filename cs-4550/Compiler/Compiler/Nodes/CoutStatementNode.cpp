@@ -23,3 +23,7 @@ void CoutStatementNode::Interpret() {
     MSG("CoutStatementNode interpret");
     cout << mExpressionNode->Evaluate() << endl;
 }
+
+void CoutStatementNode::Code(InstructionsClass &machineCode) {
+    
+}

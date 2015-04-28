@@ -27,13 +27,14 @@ void WhileStatementNode::Interpret() {
 
 void WhileStatementNode::Code(InstructionsClass &machineCode)
 {
-    mExpressionNode->CodeEvaluate(machineCode);
     unsigned char * address0 = machineCode.GetAddress();
-    unsigned char * InsertAddress = machineCode.SkipIfZeroStack();
+    mExpressionNode->CodeEvaluate(machineCode);
+    unsigned char * offset1 = machineCode.SkipIfZeroStack();
     unsigned char * address1 = machineCode.GetAddress();
     mStatementNode->Code(machineCode);
+    unsigned char * offset2 = machineCode.Jump();
     unsigned char * address2 = machineCode.GetAddress();
-    machineCode.SetOffset(InsertAddress, (int) (address2 - address1));
-    machineCode.SetOffset(InsertAddress, (int) (address0 - address2)); //offSet
+    machineCode.SetOffset(offset1, (int) (address2 - address1));
+    machineCode.SetOffset(offset2, (int) (address0 - address2)); //offSet
     
 }

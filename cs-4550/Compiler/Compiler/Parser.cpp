@@ -112,11 +112,15 @@ AssignmentStatementNode * Parser::AssignmentStatement() {
 }
 
 CoutStatementNode * Parser::CoutStatement() {
+    std::vector<ExpressionNode*> expressions;
     Match(COUT_TOKEN);
-    Match(INSERTION_TOKEN);
-    ExpressionNode *expression = Expression();
-    Match(SEMICOLON_TOKEN);
-    CoutStatementNode *csn = new CoutStatementNode(expression);
+    do {
+        Match(INSERTION_TOKEN);
+        ExpressionNode *expression = Expression();
+        expressions.push_back(expression);
+    } while(mScanner->PeekNextToken().GetTokenType() != SEMICOLON_TOKEN);
+        Match(SEMICOLON_TOKEN);
+    CoutStatementNode *csn = new CoutStatementNode(expressions);
     return csn;
 }
 

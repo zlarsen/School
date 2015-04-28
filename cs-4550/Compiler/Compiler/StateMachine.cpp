@@ -44,7 +44,7 @@ StateMachine::StateMachine() {
     mLegalMoves[START_STATE][WHITESPACE_CHAR] = START_STATE;
     mLegalMoves[START_STATE][NEW_LINE_CHAR] = START_STATE;
     
-    // ; + - / *
+    // ; + - / * += -=
     mLegalMoves[START_STATE][SEMICOLON_CHAR] = SEMICOLON_STATE;
     mLegalMoves[START_STATE][PLUS_CHAR] = PLUS_STATE;
     mLegalMoves[START_STATE][MINUS_CHAR] = MINUS_STATE;
@@ -52,6 +52,8 @@ StateMachine::StateMachine() {
     mLegalMoves[DIVIDE_STATE][DIVIDE_CHAR] = LINE_COMMENT_STATE;
     mLegalMoves[DIVIDE_STATE][TIMES_CHAR] = BLOCK_COMMENT1_STATE;
     mLegalMoves[START_STATE][TIMES_CHAR] = TIMES_STATE;
+    mLegalMoves[PLUS_STATE][EQUAL_CHAR] = PLUS_EQUAL_STATE;
+    mLegalMoves[MINUS_STATE][EQUAL_CHAR] = MINUS_EQUAL_STATE;
     
     // ()
     mLegalMoves[START_STATE][LPAREN_CHAR] = LPAREN_STATE;
@@ -107,6 +109,8 @@ StateMachine::StateMachine() {
     mCorrespondingTokenTypes[MINUS_STATE] = MINUS_TOKEN;
     mCorrespondingTokenTypes[TIMES_STATE] = TIMES_TOKEN;
     mCorrespondingTokenTypes[DIVIDE_STATE] = DIVIDE_TOKEN;
+    mCorrespondingTokenTypes[PLUS_EQUAL_STATE] = PLUS_EQUAL_TOKEN;
+    mCorrespondingTokenTypes[MINUS_EQUAL_STATE] = MINUS_EQUAL_TOKEN;
     mCorrespondingTokenTypes[EQUAL_STATE] = EQUAL_TOKEN;
     mCorrespondingTokenTypes[INSERTION_STATE] = INSERTION_TOKEN;
     mCorrespondingTokenTypes[EOF_STATE] = EOF_TOKEN;
