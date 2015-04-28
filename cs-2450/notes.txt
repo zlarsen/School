@@ -1,12 +1,69 @@
 Five steps in the Programing process
-1. Plan
+1.Plan
+  1.CMMI
+   0.Undefined
+   1.Initial - White Horse
+   2.Managed - Team
+   3.Defined - Team of Teams
+   4.Quantitative - Data Collection
+   5.Optimizatation - Use Data
+  2.Estimation
+   1.Koccomo
+   2.Competitive Pricing
+   3.Market Will Bear
+   4.Previous Versions
+  3.Mythical Man Month
+   1.Adding Programmers late is bad.
+   2.One Man's work in five months is not five men's work of one month.
+   3.No Silver Bullet
+   4.Chief Programmer (Surgical Team)
+   5.Tar Pit
+   6.Second System
+   7.You develop one to throw away
+  4.Evolutionary vs Waterfall ( SCRUM )
+  5.Killer Robot
+  6.XP Programming
+   1.Pairs Like Skilled people taking turns
+   2.CRC Cards
 2. Design
+ 1.UML
+  1.Class Diagram
+  2.Sequential
+  3.Use Case
+  4.Interactive
+  5.State Machine
+ 2.Petri-net
+ 3.User Design
+ 4.Software Design
+  1.Pipes and Filters
+  2.Buffers
+  3.MVC
 3. Code
+ 1.Comments
+ 2.Indentation
+ 3.Consistency
+ 4.DRY
+ 5.Avoid Pointers
+ 6.Descriptive Variables
+ 7.Arrays (Bound Checking)
 4. Test
+ 1.Black/White/Grey Box
+ 2.Alpha/Beta/Gold/Release
+ 3.Mothra
+ 4.Smoke -See where the most time is spent
+ 5.Code Reviews
+ 6.Stress Testing
+ 7.DESTRUCTIVE Testing
+ 8.Oracle Testing
+ 9.Acceptance Testing
+ 10.User Testing
 5. Implement
-
-Acceptance Testing - Client accepts it
-Mothra Testing - If you can change the code and it still works
-Stress Testing - Pushing the code to its limits
-
-	
+ 1.Before Release
+  1.Product Finished and Tested
+  2.Documentation
+  3.Legal - Intellectual Property
+  4.Installation Instructions
+  5.Training
+  6.Support
+ 2.$$$$$$$$$$$$
+ 3.Replace/Update/Leave Alone
