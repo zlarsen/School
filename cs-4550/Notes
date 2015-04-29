@@ -70,3 +70,47 @@ S -> aSa|bSb|...|zSz|a|b|c|.....|z|LAMBDA|
 3/30/15
 
 When you change your block node to a statement node add it as the fourth of something. I forgot.
+
+###Final Review
+
+Last year's Final 
+Turn in your completed compiler code.
+Support the `*=` for both interpreting and encoding.
+Support the Boolean `not` operator using the `!` symbol. `!` Has a higher priority than all binary operators. It should convert the integer zero to the integer one, and any non-zero integer to the integer zero. This only needs to work for interpreting, not coding.
+Expression -lowest
+  Or
+  And
+  Relational
+  Plus Minus
+  Times Divide
+  Exponent
+  Unary -highest priority
+Factor
+Support if/else for both interpreting and coding. I recommend not creating a new type of node, but enhancing the IF node to hold a second StatementNode pointer. At parse time peek ahead for the ELSE token. If it is not there, set the second StatementNode pointer to NULL.
+```
+IfStatementNode* PARSER::IfStatement() {
+StatementNode* S2 = NULL;
+Match(Iftoken);
+Match(LPAREN);
+ExpressionNode * e = Expression();
+Match(RPAREN);
+StatementNode * S1 = Statement();
+Tokentype tt = mScanner.PeekNextToken().GetTokenType();
+if (tt == ElSE_TOKEN) {
+ Match(ELSE_TOKEN);
+ S2 = Statement();
+}
+IfStatementNode* in = new IfStatementNode(e,S1,S2);
+}
+ ### How to code it
+    if StatementNode2 is !null do this code else do the original code
+    mExpressionNode->CodeEvaluate(machineCode);
+    unsigned char * offset1 = machineCode.SkipIfZeroStack();
+    unsigned char * address1 = machineCode.GetAddress();
+    mStatementNode->Code(machineCode);
+    unsigned char * address2 = machineCode.GetAddress();
+    unsigned char * offset2 = machineCode.Jump();
+    mStatementNode2->Code(machineCode);
+    unsigned char * address3 = machineCode.GetAddress();
+    machineCode.SetOffset(offset1, (int) (address2 - address1));
+    machineCode.SetOffset(offset2, (int) (address3 - address2));

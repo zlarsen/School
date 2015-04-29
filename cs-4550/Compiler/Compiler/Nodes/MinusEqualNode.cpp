@@ -28,8 +28,8 @@ void MinusEqualNode::Interpret() {
 
 void MinusEqualNode::Code(InstructionsClass &machineCode)
 {
-    mExpressionNode->CodeEvaluate(machineCode);
     machineCode.PushVariable(mIdentifierNode->GetIndex());
+    mExpressionNode->CodeEvaluate(machineCode);
     machineCode.PopPopSubPush();
     machineCode.PopAndStore(mIdentifierNode->GetIndex());
 }

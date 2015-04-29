@@ -25,5 +25,5 @@ void CoutStatementNode::Interpret() {
 }
 
 void CoutStatementNode::Code(InstructionsClass &machineCode) {
-    
+    MSG("CoutStatementNode interpret");
 }
