@@ -1,6 +1,12 @@
 void main()
 {
-    if (3 < 5){
-        cout << 5;
+    int counter;
+    counter = 16 / 4;
+    int num;
+    num = 6;
+    counter += 1;
+    if (counter >= 3) {
+        cout << num * num << 113 << counter << endl;
+        // should cout 36 113 5
     }
 }

@@ -16,7 +16,7 @@ using namespace std;
 enum TokenType {
     // reserved words
     VOID_TOKEN, MAIN_TOKEN, INT_TOKEN, COUT_TOKEN, FOR_TOKEN, IF_TOKEN, ELSE_TOKEN,
-    WHILE_TOKEN, DO_TOKEN, REPEAT_TOKEN,
+    WHILE_TOKEN, DO_TOKEN, ENDL_TOKEN, REPEAT_TOKEN,
     
     // relational operators
     ASSIGNMENT_TOKEN, PLUS_TOKEN, MINUS_TOKEN, TIMES_TOKEN, DIVIDE_TOKEN,
@@ -34,7 +34,7 @@ enum TokenType {
 const string gTokenTypeNames[] = {
     // reserved words
     "VOID", "MAIN", "INT", "COUT", "FOR", "IF", "ELSE",
-    "WHILE", "DO", "REPEAT",
+    "WHILE", "DO", "ENDL", "REPEAT",
     
     // relational operators
     "ASSIGNMENT", "PLUS", "MINUS", "TIMES", "DIVIDE",

@@ -49,7 +49,7 @@ private:
     CoutStatementNode * CoutStatement();
     IfStatementNode * IfStatement();
     WhileStatementNode * WhileStatement();
-    RepeatStatementNode * RepeatStatement();
+//    RepeatStatementNode * RepeatStatement();
     IdentifierNode * Identifier();
     ExpressionNode * Expression();
     ExpressionNode * Relational();

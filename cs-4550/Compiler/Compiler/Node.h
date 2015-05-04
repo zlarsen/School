@@ -48,11 +48,13 @@ class EqualNode;
 class NodeEqualNode;
 class OrNode;
 class AndNode;
+class EndlNode;
 
 class Node {
 public:
     virtual ~Node();
     virtual void Interpret() = 0;
+    virtual void Code(InstructionsClass &machineCode) = 0;
 };
 
 class StartNode: public Node {
@@ -90,7 +92,6 @@ class StatementNode: public Node {
 public:
     StatementNode();
     ~StatementNode();
-    void Code(InstructionsClass &machineCode);
 private:
 };
 
@@ -120,19 +121,37 @@ public:
     ~AssignmentStatementNode();
     void Interpret();
     void Code(InstructionsClass &machineCode);
-private:
+protected:
     IdentifierNode *mIdentifierNode;
     ExpressionNode *mExpressionNode;
 };
 
 class CoutStatementNode: public StatementNode {
 public:
-    CoutStatementNode(ExpressionNode *expressionNode);
+    CoutStatementNode();
     ~CoutStatementNode();
     void Interpret();
     void Code(InstructionsClass &machineCode);
+    void AddExpressionNode(ExpressionNode *en);
 private:
-    ExpressionNode *mExpressionNode;
+    vector<ExpressionNode*> mExpressionNodes;
+    EndlNode *mEndlNode;
+};
+
+class ExpressionNode {
+public:
+    virtual ~ExpressionNode();
+    virtual int Evaluate() = 0;
+    virtual void CodeEvaluate(InstructionsClass &machineCode) = 0;
+private:
+};
+
+class EndlNode: public ExpressionNode {
+public:
+    EndlNode();
+    ~EndlNode();
+    int Evaluate();
+    void CodeEvaluate(InstructionsClass &machineCode);
 };
 
 class IfStatementNode: public StatementNode {
@@ -153,7 +172,6 @@ public:
     ~WhileStatementNode();
     void Interpret();
     void Code(InstructionsClass &machineCode);
-
 private:
     ExpressionNode *mExpressionNode;
     StatementNode *mStatementNode;
@@ -167,14 +185,6 @@ public:
 private:
     ExpressionNode *mExpressionNode;
     StatementNode *mStatementNode;
-};
-
-class ExpressionNode {
-public:
-    virtual ~ExpressionNode();
-    virtual int Evaluate() = 0;
-    void CodeEvaluate(InstructionsClass &machineCode);
-private:
 };
 
 class IntegerNode: public ExpressionNode {
@@ -212,12 +222,12 @@ private:
 
 class BinaryOperatorNode: public ExpressionNode {
 public:
-    BinaryOperatorNode(ExpressionNode *right, ExpressionNode *left);
+    BinaryOperatorNode(ExpressionNode *left, ExpressionNode *right);
     ~BinaryOperatorNode();
 private:
 protected:
-    ExpressionNode *mRight;
     ExpressionNode *mLeft;
+    ExpressionNode *mRight;
 };
 
 class PlusNode: public BinaryOperatorNode {
@@ -323,8 +333,6 @@ public:
     void Interpret();
     void Code(InstructionsClass &machineCode);
 private:
-    IdentifierNode *mIdentifierNode;
-    ExpressionNode *mExpressionNode;
 };
 
 class MinusEqualNode: public AssignmentStatementNode {
@@ -334,7 +342,5 @@ public:
     void Interpret();
     void Code(InstructionsClass &machineCode);
 private:
-    IdentifierNode *mIdentifierNode;
-    ExpressionNode *mExpressionNode;
 };
 #endif /* defined(__Compiler__Node__) */

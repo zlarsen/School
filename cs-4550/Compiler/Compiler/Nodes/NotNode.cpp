@@ -25,4 +25,5 @@ int NotNode::Evaluate() {
 void NotNode::CodeEvaluate(InstructionsClass &machineCode)
 {
     MSG("NotNode CodeEvaluate");
+    mExpressionNode->CodeEvaluate(machineCode);
 }

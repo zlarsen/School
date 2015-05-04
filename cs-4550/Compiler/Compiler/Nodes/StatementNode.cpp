@@ -16,7 +16,3 @@ StatementNode::StatementNode() {
 StatementNode::~StatementNode() {
     MSG("StatementNode deconstructor");
 }
-
-void StatementNode::Code(InstructionsClass &machineCode) {
-    MSG("StatementNode Code");
-}

@@ -14,17 +14,15 @@
 #include "SymbolTable.h"
 #include "Parser.h"
 #include "Node.h"
-bool interpret = false;
+bool interpret = true;
 bool code = true;
 
 void CodeAndExecute(){
 
     Scanner scanner("/Users/zach/Code/school/cs-4550/Compiler/Compiler/test.txt");
-    SymbolTable symboltable;
-    Parser parser(&scanner, &symboltable);
-    
-    StartNode * root = parser.Start();
-    
+    SymbolTable symbolTable;
+    Parser parser(&scanner, &symbolTable);
+    StartNode *root = parser.Start();
     InstructionsClass machineCode;
     root->Code(machineCode);
     machineCode.Finish();
@@ -44,7 +42,7 @@ void scan() {
 
 void testParser() {
     SymbolTable symbolTable;
-    Scanner scanner("/Users/zach/Code/school/cs-4550/Compiler/Compiler/main.txt");
+    Scanner scanner("/Users/zach/Code/school/cs-4550/Compiler/Compiler/test.txt");
     Parser parser(&scanner, &symbolTable);
     StartNode *root = parser.Start();
     root->Interpret();
@@ -72,6 +70,11 @@ void testSymbolTable() {
 }
 
 int main(int argc, const char * argv[]) {
-    CodeAndExecute();
+    if(code) {
+        CodeAndExecute();
+    }
+    if(interpret) {
+        testParser();
+    }
     return 0;
 }

@@ -10,8 +10,10 @@
 #include <assert.h>
 #include <cstdlib>
 #include <cstdio>
+
+#include "Instructions.h"
+
 using namespace std;
-#include "instructions.h"
 
 #pragma warning( disable : 4311 )
 
@@ -81,7 +83,6 @@ void InstructionsClass::Encode(int x)
         << " instructions." << endl;
         exit(1);
     }
-    
 }
 
 void InstructionsClass::Encode(long long x)
@@ -96,7 +97,6 @@ void InstructionsClass::Encode(long long x)
         << " instructions." << endl;
         exit(1);
     }
-    
 }
 
 void InstructionsClass::Encode(void * p)
@@ -224,7 +224,6 @@ void InstructionsClass::PopAndStore(unsigned int index)
     Encode(EAX_TO_MEM);
     int * variable_address = GetMem(index);
     Encode(variable_address);
-    
 }
 
 
@@ -386,7 +385,7 @@ unsigned char * InstructionsClass::SkipIfZeroStack()
     Encode(JE_FAR2);
     unsigned char * addressToFillInLater = GetAddress();
     Encode(0); // the exact number of bytes to skip gets set later,
-				// when we know it!  Call SetOffset() to do that.
+    // when we know it!  Call SetOffset() to do that.
     return addressToFillInLater;
 }
 
@@ -405,7 +404,7 @@ unsigned char *  InstructionsClass::Jump()
     Encode(JUMP_ALWAYS_FAR);
     unsigned char * addressToFillInLater = GetAddress();
     Encode(0); // the exact number of bytes to jump gets set later,
-				// when we know it!  Call SetOffset() to do that.
+    // when we know it!  Call SetOffset() to do that.
     return addressToFillInLater;
 }
 

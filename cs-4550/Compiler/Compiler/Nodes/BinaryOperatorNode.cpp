@@ -47,7 +47,7 @@ LessEqualNode::LessEqualNode(ExpressionNode *l, ExpressionNode *r)
 
 int LessEqualNode::Evaluate() {
     MSG("LessEqualNode eval");
-    return mLeft <= mRight;
+    return mLeft->Evaluate() <= mRight->Evaluate();
 }
 
 void LessEqualNode::CodeEvaluate(InstructionsClass &machineCode)
@@ -65,7 +65,7 @@ GreaterNode::GreaterNode(ExpressionNode *l, ExpressionNode *r)
 
 int GreaterNode::Evaluate() {
     MSG("GreaterNode eval");
-    return mLeft > mRight;
+    return mLeft->Evaluate() > mRight->Evaluate();
 }
 
 
@@ -85,7 +85,7 @@ GreaterEqualNode::GreaterEqualNode(ExpressionNode *l, ExpressionNode *r)
 
 int GreaterEqualNode::Evaluate() {
     MSG("GreaterEqualNode eval");
-    return mLeft >= mRight;
+    return mLeft->Evaluate() >= mRight->Evaluate();
 }
 
 
@@ -104,7 +104,7 @@ EqualNode::EqualNode(ExpressionNode *l, ExpressionNode *r)
 
 int EqualNode::Evaluate() {
     MSG("EqualNode eval");
-    return mLeft == mRight;
+    return mLeft->Evaluate() == mRight->Evaluate();
 }
 
 void EqualNode::CodeEvaluate(InstructionsClass &machineCode)
@@ -123,7 +123,7 @@ NotEqualNode::NotEqualNode(ExpressionNode *l, ExpressionNode *r)
 
 int NotEqualNode::Evaluate() {
     MSG("NotEqualNode eval");
-    return mLeft != mRight;
+    return mLeft->Evaluate() != mRight->Evaluate();
 }
 
 
@@ -143,7 +143,7 @@ OrNode::OrNode(ExpressionNode *l, ExpressionNode *r)
 
 int OrNode::Evaluate() {
     MSG("OrNode eval");
-    return mLeft || mRight;
+    return mLeft->Evaluate() || mRight->Evaluate();
 }
 
 
@@ -163,7 +163,7 @@ AndNode::AndNode(ExpressionNode *l, ExpressionNode *r)
 
 int AndNode::Evaluate() {
     MSG("AndNode eval");
-    return mLeft && mRight;
+    return mLeft->Evaluate() && mRight->Evaluate();
 }
 
 void AndNode::CodeEvaluate(InstructionsClass &machineCode)

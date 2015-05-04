@@ -48,6 +48,9 @@ void Token::CheckReserved() {
     else if (strcmp(lexeme, "repeat") == 0) {
         mType = REPEAT_TOKEN;
     }
+    else if (strcmp(lexeme, "endl") == 0) {
+        mType = ENDL_TOKEN;
+    }
 }
 
 ostream & operator<<(ostream &out, const Token &token) {

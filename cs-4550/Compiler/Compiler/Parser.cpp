@@ -88,9 +88,9 @@ StatementNode * Parser::Statement() {
     else if (tt == WHILE_TOKEN) {
         return WhileStatement();
     }
-    else if (tt == REPEAT_TOKEN) {
-        return RepeatStatement();
-    }
+//    else if (tt == REPEAT_TOKEN) {
+//        return RepeatStatement();
+//    }
     return NULL;
 }
 
@@ -104,23 +104,56 @@ DeclarationStatementNode * Parser::DeclarationStatement() {
 
 AssignmentStatementNode * Parser::AssignmentStatement() {
     IdentifierNode *identifier = Identifier();
-    Match(ASSIGNMENT_TOKEN);
-    ExpressionNode *expression = Expression();
+    TokenType tt = mScanner->PeekNextToken().GetTokenType();
+    AssignmentStatementNode *asn = NULL;
+    if (tt == ASSIGNMENT_TOKEN) {
+        Match(ASSIGNMENT_TOKEN);
+        ExpressionNode *expression = Expression();
+        asn = new AssignmentStatementNode(identifier, expression);
+    }
+    else if (tt == PLUS_EQUAL_TOKEN) {
+        Match(PLUS_EQUAL_TOKEN);
+        ExpressionNode *expression = Expression();
+        asn = new PlusEqualNode(identifier, expression);
+    }
+    else if (tt == MINUS_EQUAL_TOKEN) {
+        Match(MINUS_EQUAL_TOKEN);
+        ExpressionNode *expression = Expression();
+        asn = new MinusEqualNode(identifier, expression);
+    }
     Match(SEMICOLON_TOKEN);
-    AssignmentStatementNode *asn = new AssignmentStatementNode(identifier, expression);
     return asn;
 }
 
 CoutStatementNode * Parser::CoutStatement() {
-    std::vector<ExpressionNode*> expressions;
     Match(COUT_TOKEN);
-    do {
-        Match(INSERTION_TOKEN);
-        ExpressionNode *expression = Expression();
-        expressions.push_back(expression);
-    } while(mScanner->PeekNextToken().GetTokenType() != SEMICOLON_TOKEN);
-        Match(SEMICOLON_TOKEN);
-    CoutStatementNode *csn = new CoutStatementNode(expressions);
+    Match(INSERTION_TOKEN);
+    CoutStatementNode *csn = new CoutStatementNode();
+    ExpressionNode *expression = Expression();
+    csn->AddExpressionNode(expression);
+    while (true) {
+        TokenType tt = mScanner->PeekNextToken().GetTokenType();
+        if (tt == INSERTION_TOKEN) {
+            Match(INSERTION_TOKEN);
+            Token next = mScanner->PeekNextToken();
+            if (next.GetTokenType() == ENDL_TOKEN) {
+                Match(ENDL_TOKEN);
+                csn->AddExpressionNode(NULL);
+            }
+            else {
+                ExpressionNode *nextExpression = Expression();
+                csn->AddExpressionNode(nextExpression);
+            }
+        }
+        else {
+            if (tt == ENDL_TOKEN) {
+                Match(ENDL_TOKEN);
+                csn->AddExpressionNode(NULL);
+            }
+            Match(SEMICOLON_TOKEN);
+            break;
+        }
+    }
     return csn;
 }
 
@@ -289,12 +322,12 @@ WhileStatementNode* Parser::WhileStatement() {
     return ws;
 }
 
-RepeatStatementNode* Parser::RepeatStatement() {
-    Match(REPEAT_TOKEN);
-    Match(LPAREN_TOKEN);
-    ExpressionNode *e = Expression();
-    Match(RPAREN_TOKEN);
-    StatementNode *statement = Statement();
-    RepeatStatementNode *rsn = new RepeatStatementNode(e, statement);
-    return rsn;
-}
+//RepeatStatementNode* Parser::RepeatStatement() {
+//    Match(REPEAT_TOKEN);
+//    Match(LPAREN_TOKEN);
+//    ExpressionNode *e = Expression();
+//    Match(RPAREN_TOKEN);
+//    StatementNode *statement = Statement();
+//    RepeatStatementNode *rsn = new RepeatStatementNode(e, statement);
+//    return rsn;
+//}

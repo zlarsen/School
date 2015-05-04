@@ -9,21 +9,59 @@
 #include <stdio.h>
 #include "Node.h"
 
-CoutStatementNode::CoutStatementNode(ExpressionNode *en)
-: mExpressionNode(en) {
+CoutStatementNode::CoutStatementNode() {
     MSG("CoutStatementNode init");
+    mEndlNode = new EndlNode();
 }
 
 CoutStatementNode::~CoutStatementNode() {
     MSG("CoutStatementNode deconstructor");
-    delete mExpressionNode;
+    for (int i=0; i<mExpressionNodes.size(); i++) {
+        delete mExpressionNodes.back();
+        mExpressionNodes.pop_back();
+    }
+    delete mEndlNode;
 }
 
 void CoutStatementNode::Interpret() {
-    MSG("CoutStatementNode interpret");
-    cout << mExpressionNode->Evaluate() << endl;
+    for (int i=0; i<mExpressionNodes.size(); i++) {
+        if (mExpressionNodes.at(i) == NULL) {
+            mEndlNode->Evaluate();
+        }
+        else {
+            cout << mExpressionNodes.at(i)->Evaluate();
+        }
+    }
 }
 
 void CoutStatementNode::Code(InstructionsClass &machineCode) {
-    MSG("CoutStatementNode interpret");
+    for (int i=0; i<mExpressionNodes.size(); i++) {
+        if (mExpressionNodes.at(i) == NULL) {
+            mEndlNode->CodeEvaluate(machineCode);
+        }
+        else {
+            mExpressionNodes.at(i)->CodeEvaluate(machineCode);
+            machineCode.PopAndWrite();
+        }
+    }
+}
+
+void CoutStatementNode::AddExpressionNode(ExpressionNode *en) {
+    mExpressionNodes.push_back(en);
+}
+
+// EndlNode
+
+EndlNode::EndlNode() {}
+
+EndlNode::~EndlNode() {}
+
+int EndlNode::Evaluate(){
+    cout << endl;
+    return 0;
+}
+
+void EndlNode::CodeEvaluate(InstructionsClass &machineCode) {
+    MSG("Endl Statement CodeEvaluate");
+    machineCode.WriteEndl();
 }

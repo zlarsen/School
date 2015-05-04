@@ -5,7 +5,7 @@ void main()
     count = 15;
     repeat(count / 2)
     {
-        cout << count;
+        cout << count << endl;
         count = count - 1;
     }
 }
