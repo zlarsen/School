@@ -1,0 +1,53 @@
+Computation: You can write down the rules.
+What do we want in a theory?
+	*Precision
+	*Mathematical, formal
+	*Can prove theorems about computation
+	*Generality
+	*Technology-independent, applies to the future as well as the present
+	*Abstraction: Ignores inessential details
+Representing information
+	Alphabet
+		*A set of chars
+	Strings
+		*Finite concatenation of alphabet symbols, order matters
+		Empty string = e
+	Inputs & Outputs
+		*Strings
+
+(x . y) . z = x . (y . z)
+sigma = 0 = any single letter
+Base Case
+|z| = 0 => z = empty string = E
+(x . y).z = (x.y).E = x.y
+x.(y.z) = x.(y.E) = x.y	
+
+Induction Hypothesis
+For any x,y and any w s.t. |w|<=n, (x.y).w=x.(y.w)
+
+Induction Step
+Let |z|=n+1, then z= w0 for some 0eE and some weE^n
+(x.y).z = (x.y).(w0)
+        = ((x.y).w)0     by def of concatenation--->
+        = (x.(y.w))0     by induction hypothesis
+        = x.((y.w)0)     by def of concatenation<---
+        = x.(y.(w0))     by def of concatenation<---
+        = x.(y.z)        (z = w0)
+
+A Language is a set of strings. finite or infinite. No need for internal structure.
+
+e = the empty string
+0/ = the empty set, a language
+
+kleene star 
+
+E* = Kleene Star of E
+
+How to write a good proof
+1. State the game plan, including the general proof technique you are using.
+2. Keep the flow linear and use English to explain when you are moving step to step.
+3. Proofs are read by humans.
+4. Use as little new symbols as possible, and use old symbols correctly.
+5. Avoid "Clearly"
+6. When you are done explain you are done.
+
