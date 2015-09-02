@@ -1,0 +1,90 @@
+For make just type make and the name of the file.
+
+Artificial Intelligence
+What do we mean?
+
+
+	Human	Rational
+Think	      |
+	      |
+	      |
+	      |
+__________________________
+Act	      |
+	      |
+	      |
+	      |
+Performance
+Environment
+Actuator
+Sensors
+
+Agent Program Implementations
+-----------------------------
+Table Driven
+Simple Reflex
+Model Based Reflex
+Goal Based
+Utility Based
+Learning
+
+Oxygen and Nitrogen are the computers always logged into Ubuntu
+
+**These will be on the midterm**
+
+Environment Properties
+
+Fully vs partially observable
+Deterministic vs stochastic
+	You know everything vs not knowing everything
+Episodic vs sequential
+Discrete vs continous
+Static vs dynamic
+Single vs multiple agent
+known vs unknown
+**These will be on the Midterm **
+
+action->SetCode(ai::Scavenger::Action::GO_NORTH);
+ai-agents/build/linux
+-> make
+cd ai/bin/00bin-o
+RUN_Scavenger_Search
+#launch the agent player replace "s" with the name of your agent
+AgentProgram.pm copy Snorlax and change to my scavenger
+
+9/1/15
+
+Your base starts at 0,0,0
+You receive X_LOC, Y_LOC, and Z_LOC which is your current location
+percept->GetAtom("X_LOC").GetValue();
+
+plain No damage
+mud   Takes extra energy
+rocks Takes damage
+cliff Dies
+wall  Can't move
+
+Reading Percepts
+
+BASE = key
+3 = value
+
+CELL_132: x,y,z,N,S,E,W
+
+stringstream  a set of characters set in Memory
+
+ss.ignore() = Skip one char
+Create a const double EPSILON = 0.0001;
+include cmath for fabs(x-y) < EPSILON
+
+Search follow this pattern
+
+Breathfirst
+initial state
+	What happens if N?
+	What happens if S?
+	What happens if E?
+	What happens is W?
+	Follow it out like a spiderweb
+
+blocker@dixie.edu for career plans
