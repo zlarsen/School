@@ -26,11 +26,13 @@ class CoutStatementNode;
 class IfStatementNode;
 class RepeatStatementNode;
 class WhileStatementNode;
+class DoWhileNode;
 class IdentifierNode;
 class ExpressionNode;
 class BlockNode;
 class NotNode;
 class IntegerNode;
+class ExponentNode;
 
 class Parser {
 public:
@@ -49,12 +51,14 @@ private:
     CoutStatementNode * CoutStatement();
     IfStatementNode * IfStatement();
     WhileStatementNode * WhileStatement();
+    DoWhileNode * DoWhile();
 //    RepeatStatementNode * RepeatStatement();
     IdentifierNode * Identifier();
     ExpressionNode * Expression();
     ExpressionNode * Relational();
     ExpressionNode * Side();
     ExpressionNode * Term();
+    ExpressionNode * Exponent();
     ExpressionNode * Factor();
     ExpressionNode * Or();
     ExpressionNode * And();

@@ -37,6 +37,8 @@
 		92CEE7D61AD5CADB00BCFE99 /* RepeatStatementNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92CEE7D51AD5CADB00BCFE99 /* RepeatStatementNode.cpp */; };
 		92FB7F941AEED41B00A06858 /* PlusEqualNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */; };
 		92FB7F961AEEDA5600A06858 /* MinusEqualNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */; };
+		92FB7F981AF7F89800A06858 /* DoWhileNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F971AF7F89800A06858 /* DoWhileNode.cpp */; };
+		92FB7F9B1AF800D000A06858 /* ExponentNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FB7F9A1AF800D000A06858 /* ExponentNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +95,10 @@
 		92CEE7D51AD5CADB00BCFE99 /* RepeatStatementNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatStatementNode.cpp; path = Compiler/Nodes/RepeatStatementNode.cpp; sourceTree = "<group>"; };
 		92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlusEqualNode.cpp; path = Compiler/Nodes/PlusEqualNode.cpp; sourceTree = "<group>"; };
 		92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MinusEqualNode.cpp; path = Compiler/Nodes/MinusEqualNode.cpp; sourceTree = "<group>"; };
+		92FB7F971AF7F89800A06858 /* DoWhileNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoWhileNode.cpp; path = Compiler/Nodes/DoWhileNode.cpp; sourceTree = "<group>"; };
+		92FB7F991AF7FBA300A06858 /* dowhile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dowhile.txt; sourceTree = "<group>"; };
+		92FB7F9A1AF800D000A06858 /* ExponentNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExponentNode.cpp; path = Compiler/Nodes/ExponentNode.cpp; sourceTree = "<group>"; };
+		92FB7F9C1AF802B200A06858 /* exponent.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exponent.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,8 @@
 				92FB7F931AEED41B00A06858 /* PlusEqualNode.cpp */,
 				92FB7F951AEEDA5600A06858 /* MinusEqualNode.cpp */,
 				92CEE7AC1ACC602F00BCFE99 /* AssignmentStatementNode.cpp */,
+				92FB7F971AF7F89800A06858 /* DoWhileNode.cpp */,
+				92FB7F9A1AF800D000A06858 /* ExponentNode.cpp */,
 				9229659A1A79921A008F2CAD /* Compiler */,
 				922965991A79921A008F2CAD /* Products */,
 			);
@@ -149,7 +157,9 @@
 			children = (
 				9229659B1A79921A008F2CAD /* main.cpp */,
 				922B68341AA53F8E00F747AD /* main.txt */,
+				92FB7F991AF7FBA300A06858 /* dowhile.txt */,
 				9202039E1AE8487800D57020 /* test.txt */,
+				92FB7F9C1AF802B200A06858 /* exponent.txt */,
 				922B682E1AA5071E00F747AD /* SymbolTable.cpp */,
 				922B682F1AA5071E00F747AD /* SymbolTable.h */,
 				922B68311AA50C3C00F747AD /* Node.cpp */,
@@ -226,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92CEE7BF1ACC7CC000BCFE99 /* MinusNode.cpp in Sources */,
+				92FB7F981AF7F89800A06858 /* DoWhileNode.cpp in Sources */,
 				92FB7F941AEED41B00A06858 /* PlusEqualNode.cpp in Sources */,
 				9229659C1A79921A008F2CAD /* main.cpp in Sources */,
 				922965A41A799261008F2CAD /* Token.cpp in Sources */,
@@ -248,6 +259,7 @@
 				9202039D1AE82EA000D57020 /* Instructions.cpp in Sources */,
 				92CEE7D21AD585FD00BCFE99 /* NotNode.cpp in Sources */,
 				92CEE7D41AD586A400BCFE99 /* WhileStatementNode.cpp in Sources */,
+				92FB7F9B1AF800D000A06858 /* ExponentNode.cpp in Sources */,
 				92CEE7B71ACC7B5500BCFE99 /* DivideNode.cpp in Sources */,
 				92CEE7C91ACC7ED000BCFE99 /* StatementNode.cpp in Sources */,
 				92CEE7C31ACC7E2C00BCFE99 /* ProgramNode.cpp in Sources */,

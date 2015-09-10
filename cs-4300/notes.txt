@@ -88,3 +88,111 @@ initial state
 	Follow it out like a spiderweb
 
 blocker@dixie.edu for career plans
+
+9/3/15
+
+ScavengerServer -d 1 -S 15
+if you want no displays put -D 0 and comment out #Scavenger Display
+ScavengerDisplay -d 1
+
+Cell Class
+and cell if it already exists update it
+reset location
+goal location
+getCell(x,y) 
+map<key, value> value = cell class
+key should be a combination of x,y
+
+make a utility class that can compare cells with location based off of their x,y
+modify <  to compare x,y
+
+every timestep update the model with new info, choose action, and then return action.
+
+State
+--------
+Initial State
+Actions(s)0 -> list of actions where s = any state
+Result(s01,a) -> the resulting state gives a state, s1, a = any action
+GoalTest(s0) -> T/F
+StepCost(s0,a,s1) -> #
+
+BFS = Breath first search
+Search(initState):
+	Q.push(initState)
+	while (!Q.empty());
+		s = Q.pop;
+		if (GoalTest(s))
+			break
+		alist = Actions(s)
+		for a in alist:
+			si = Result(s,a)
+			Q.push(si)
+# of nodes b^d b = branches d = depth
+m = maximum depth of tree.
+
+Breadth First Search BFS big O b^d uses Queue
+Depth First Search DFS big O b^m memory storage bm uses Stack
+Uniform Cost Search UCS big O b^(c*/sc*) uses priority Queue
+
+9/8/2015
+
+Debugging
+---------
+
+ai/bin/00bin-o
+	RUN_Scavenger_Search
+ai/bin/00bin-g
+	gdb ./ScavengerAgent
+	gdb) run -a f
+
+
+Building
+--------
+
+ai-agent/build/linux
+	make configure-debug-on
+	make configure-optimize-off
+
+expendable directories
+	prog/ScavengerWorld/00obj-o
+			   /00obj-g
+			   .depend*
+		           Makefile.agents
+
+cd down into the correct directory
+make spotless
+make clean
+
+(int) (x + sin * 0.1)
+
+Homework
+
+create 2 classes
+	-state class
+		-inherits from ai::Search::state
+		-x,y,charge are datamembers to make
+		look at ai/include/Search/state.h
+	-action class
+		-inherits from ai::Search::action
+		-datamember that is an int that stores cardinal directions preferably an enum
+Heuristic: Guess how close we are to the goal.
+
+greedy search is based off of an Heuristic.
+a* is based off of how expensive it is to go there and how close you are.
+
+
+example 
+
+bool RectState::IsEqual(const ai::Search::State * const state_in) const
+{
+	const RectState * const rhs = dynamic_cast<const RectState * const>(state_in);
+	unsigned int i;
+	for(i=0; i < this->pieces.size(); i ++)
+	{
+		if(this->pieces[i] != rhs->pieces[i])
+		{
+			return false;
+		}
+	}
+	return true;
+}

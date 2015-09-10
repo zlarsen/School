@@ -3,9 +3,12 @@ void main()
     // this code snippet prints 100 the full ten times
     int count;
     count = 15;
-    repeat(count / 2)
+    if(13 == 12)
     {
-        cout << count << endl;
-        count = count - 1;
+        cout << count;
+    }
+    else
+    {
+        cout << 123;
     }
 }

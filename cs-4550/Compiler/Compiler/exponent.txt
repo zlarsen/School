@@ -1,0 +1,6 @@
+void main()
+{
+int count;
+count = (2*3)^4;
+cout << count;
+}
