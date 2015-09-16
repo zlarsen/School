@@ -1,0 +1,276 @@
+%
+% Assignment 1b for CS3530 Computational Theory:
+% Finite Automata
+% Fall 2015
+%
+% Problems taken from Sipser
+%
+
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae,aecompl}
+\usepackage{emp,ifpdf}
+\usepackage{graphicx}
+
+\ifpdf\DeclareGraphicsRule{*}{mps}{*}{}\fi
+
+\empprelude{input boxes; input theory}
+
+% skip for paragraphs, don't indent
+\addtolength{\parskip}{0.5\baselineskip}
+\parindent=0pt
+
+\begin{document}
+\begin{empfile}
+
+\begin{center}
+\textbf{\Large CS 3530: Assignment 1b} \\[2mm]
+Fall 2015
+\end{center}
+
+\raggedright
+
+\section*{Exercises}
+
+Note: In each of the following, you should show and describe the
+simpler DFAs as well as the final NFA that you construct. You must
+follow the steps of each construction precisely. Do not take
+shortcuts or simplify the results. You do not need to show
+intermediate steps.
+
+If a DFA is called for, an NFA is not acceptable. Be sure to include
+\textit{all} states of a DFA.
+
+\subsection*{Exercise 1.4c (7 points)}
+
+\subsubsection*{Problem}
+
+Each of the following languages is the intersection of two simpler
+languages. In each part, construct DFAs for the simpler languages,
+then combine them using the construction discussed in footnote~3
+(page~46) to give the state diagram of a DFA for the language given.
+In all parts $\Sigma=\{a,b\}$.
+
+\begin{itemize}
+\item Language: $\{w:w$ has an even number of $a$'s
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, A);
+	edge(q2, q1, curve, A);
+	loop(q0, up, B);
+	loop(q1, up, B);
+	loop(q2, up, B);
+	makestart(q0);
+	makefinal(q2);
+	drawboxed(q0,q1,q2);
+	\end{emp}
+	\end{center}
+	
+\begin{itemize}
+\item Language: $\{w:w$ has one or two $b$'s$\}$
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (u,0);
+	edge(q0, q1, curve, B);
+	edge(q1, q2, curve, B);
+	edge(q2, q3, curve, B);
+	loop(q0, up, A);
+	loop(q1, up, A);
+	loop(q2, up, A);
+	loop(q3, up, SIGMA);
+	makestart(q0);
+	makefinal(q1);
+	makefinal(q2);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+	
+\begin{itemize}
+\item[c.] Language: $\{w:w$ has an even number of $a$'s and one or
+two $b$'s$\}$
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (-2u,-u);
+	node.q4(); q4.c = (-u,-u);
+	node.q5(); q5.c = (0,-u);
+	node.q6(); q6.c = (-2u,-2u);
+	node.q7(); q7.c = (-u,-2u);
+	node.q8(); q8.c = (0,-2u);
+	node.q9(); q9.c = (2u,-2u);
+	node.q10(); q10.c = (-2u,-4u);
+	node.q11(); q11.c = (0,-4u);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, A);
+	edge(q0, q3, -curve, B);
+	edge(q3, q6, -curve, B);
+	edge(q6, q10, -curve, B);
+	edge(q3, q4, curve, A);
+	edge(q4, q5, curve, A);
+	edge(q5, q4, curve, A);
+	edge(q1, q4, curve, B);	
+	edge(q2, q5, curve, B);
+	edge(q2, q1, curve, A);
+	edge(q6, q9, -curve, A);
+	edge(q4, q7, curve, B);
+	edge(q7, q10, curve, B);
+	edge(q7, q8, curve, A);
+	edge(q5, q8, curve, B);
+	edge(q8, q9, curve, A);
+	edge(q9, q8, curve, A);
+	edge(q8, q11, curve, B);
+	edge(q9, q11, curve, B);
+	loop(q10, down, SIGMA);
+	loop(q11, down, SIGMA);
+	makestart(q0);
+	makefinal(q5);
+	makefinal(q8);
+	drawboxed(q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11);
+	\end{emp}
+	\end{center}
+
+\subsection*{Exercise 1.5c (7 points)}
+
+\subsubsection*{Problem}
+
+Each of the following languages is the complement of a simpler
+language. In each part, construct a DFA for the simpler language,
+then use it to give the state diagram of a DFA for the language
+given. In all parts $\Sigma=\{a,b\}$.
+
+\begin{itemize}
+\item[c.] Language: $\{w:w$ contains the substrings $ab$ or
+$ba\}$
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (-2u,-u);
+	node.q4(); q4.c = (-2u,-2u);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, B);
+	edge(q0, q3, curve, B);
+	edge(q3, q4, curve, A);
+	loop(q1, up, A);
+	loop(q3, up, B);
+	loop(q2, up, SIGMA);
+	loop(q4, up, SIGMA);
+	makestart(q0);
+	makefinal(q2);
+	makefinal(q4);
+	drawboxed(q0,q1,q2,q3,q4);
+	\end{emp}
+	\end{center}
+	
+\begin{itemize}
+\item[c.] Language: $\{w:w$ contains neither the substrings $ab$ nor
+$ba\}$
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (-2u,-u);
+	node.q4(); q4.c = (-2u,-2u);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, B);
+	edge(q0, q3, curve, B);
+	edge(q3, q4, curve, A);
+	loop(q1, up, A);
+	loop(q3, up, B);
+	loop(q2, up, SIGMA);
+	loop(q4, up, SIGMA);
+	makestart(q0);
+	makefinal(q0);
+	makefinal(q1);
+	makefinal(q3);
+	drawboxed(q0,q1,q2,q3,q4);
+	\end{emp}
+	\end{center}
+
+\subsection*{Exercise 1.7c (6 points)}
+
+\subsubsection*{Problem}
+
+Give state diagrams of NFAs with the specified number of states
+recognizing each of the following languages. In all parts the
+alphabet is $\{0,1\}$.
+
+\begin{itemize}
+\item[c.] Language: $\{w:w$ contains an even number of $0$'s, or
+contains exactly two $1$s$\}$ with six states
+\end{itemize}
+
+\subsubsection*{Solution}
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (-2u,-u);
+	node.q4(); q4.c = (-u,-u);
+	node.q5(); q5.c = (0,-u);
+	edge(q0, q1, curve, ONE);
+	edge(q1, q2, curve, ONE);
+	edge(q0, q3, curve, ZERO);
+	edge(q2, q5, curve, ZERO);
+	edge(q3, q0, curve, ZERO);
+	edge(q5, q2, curve, ZERO);
+	edge(q1, q4, curve, ZERO);
+	edge(q4, q1, curve, ZERO);
+	edge(q3, q4, curve, ONE);
+	edge(q4, q5, curve, ONE);
+	makestart(q0);
+	makefinal(q0);
+	makefinal(q1);
+	makefinal(q2);
+	makefinal(q5);
+	drawboxed(q0,q1,q2,q3,q4,q5);
+	\end{emp}
+	\end{center}
+
+\end{empfile}
+\immediate\write18{mpost -tex=latex \jobname}
+\end{document}

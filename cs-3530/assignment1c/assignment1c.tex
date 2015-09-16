@@ -1,0 +1,414 @@
+%
+% Assignment 1c for CS3530 Computational Theory:
+% Finite Automata
+% Fall 2015
+%
+% Problems taken from Sipser
+%
+
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae,aecompl}
+\usepackage{emp,ifpdf}
+\usepackage{graphicx}
+
+\ifpdf\DeclareGraphicsRule{*}{mps}{*}{}\fi
+
+\empprelude{input boxes; input theory}
+
+% skip for paragraphs, don't indent
+\addtolength{\parskip}{0.5\baselineskip}
+\parindent=0pt
+
+\begin{document}
+\begin{empfile}
+
+\begin{center}
+\textbf{\Large CS 3530: Assignment 1c} \\[2mm]
+Fall 2015
+\end{center}
+
+\raggedright
+
+\section*{Exercises}
+
+\subsection*{Exercise 1.8b (3 points)}
+
+\subsubsection*{Problem}
+
+Use the construction given in the proof of Theorem~1.45 to give the
+state diagrams of NFAs recognizing the union of the languages given.
+
+\begin{itemize}
+\item[b.] Language: $L_1\cup L_2$ where $L_1$ is the language from
+1.6c and $L_2$ is the language from 1.6f \\ (note: both language are
+from assignment 1a)
+
+\subsubsection*{Solution}
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (u,0);
+	node.q4(); q4.c = (2u,0);
+	node.q5(); q5.c = (-2u,-2u);
+	node.q6(); q6.c = (-u,-2u);
+	node.q7(); q7.c = (0,-2u);
+	node.q8(); q8.c = (u,-2u);
+	node.q9(); q9.c = (-4u,-u);
+	edge(q0, q1, curve, ZERO);
+	edge(q1, q2, curve, ONE);
+	edge(q2, q3, curve, ZERO);
+	edge(q3, q4, curve, ONE);
+	edge(q2, q0, curve, ONE);
+	edge(q3, q1, -60, ZERO);
+	edge(q5, q6, curve, ONE);
+	edge(q6, q7, curve, ONE);
+	edge(q7, q8, curve, ZERO);
+	edge(q6, q5, curve, ZERO);
+	edge(q9, q0, curve, E);
+	edge(q9, q5, -curve, E);
+	loop(q0, up, ONE);
+	loop(q1, up, ZERO);
+	loop(q4, up, SIGMA);
+	loop(q5, up, ZERO);
+	loop(q7, up, ONE);
+	loop(q8, up, SIGMA);
+	makestart(q9);
+	makefinal(q3);
+	makefinal(q5);
+	makefinal(q6);
+	makefinal(q7);
+	drawboxed(q0,q1,q2,q3,q4,q5,q6,q7,q8,q9);
+	\end{emp}
+	\end{center}
+
+Language from 1.6c: $\{w:w$ contains the substring $0101$, i.e.,
+$w=x0101y$ for some $x$ and $y\}$
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (u,0);
+	node.q4(); q4.c = (2u,0);
+	edge(q0, q1, curve, ZERO);
+	edge(q1, q2, curve, ONE);
+	edge(q2, q3, curve, ZERO);
+	edge(q3, q4, curve, ONE);
+	edge(q2, q0, curve, ONE);
+	edge(q3, q1, -60, ZERO);
+	loop(q0, up, ONE);
+	loop(q1, up, ZERO);
+	loop(q4, up, SIGMA);
+	makestart(q0);
+	makefinal(q3);
+	drawboxed(q0,q1,q2,q3,q4);
+	\end{emp}
+	\end{center}
+
+Language from 1.6f: $\{w:w$ doesn't contain the substring $110\}$
+\end{itemize}
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-2u,0);
+	node.q1(); q1.c = (-u,0);
+	node.q2(); q2.c = (0,0);
+	node.q3(); q3.c = (u,0);
+	edge(q0, q1, curve, ONE);
+	edge(q1, q2, curve, ONE);
+	edge(q2, q3, curve, ZERO);
+	edge(q1, q0, curve, ZERO);
+	loop(q0, up, ZERO);
+	loop(q2, up, ONE);
+	loop(q3, up, SIGMA);
+	makestart(q0);
+	makefinal(q0);
+	makefinal(q1);
+	makefinal(q2);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+
+\subsection*{Exercise 1.9b (3 points)}
+
+\subsubsection*{Problem}
+
+Use the construction given in the proof of Theorem~1.47 to give the
+state diagrams of NFAs recognizing the concatenation of the
+languages given.
+
+\begin{itemize}
+\item[b.] Language: $L_1\circ L_2$ where $L_1$ is the language from
+1.6b and $L_2$ is the language from 1.6m \\ (note: both language are
+from assignment 1a)
+
+Language from 1.6b: $\{w:w$ contains at least three $1$s$\}$
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-1.5u,0);
+	node.q1(); q1.c = (-.5u,0);
+	node.q2(); q2.c = (.5u,0);
+	node.q3(); q3.c = (1.5u,0);
+	edge(q0, q1, curve, ONE);
+	edge(q1, q2, curve, ONE);
+	edge(q2, q3, curve, ONE);
+	loop(q0, down, ZERO);
+	loop(q1, down, ZERO);
+	loop(q2, down, ZERO);
+	loop(q3, down, SIGMA);
+	makestart(q0);
+	makefinal(q3);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+
+Language from 1.6m: The empty set
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-1.5u,0);
+	loop(q0, up, SIGMA);
+	makestart(q0);
+	drawboxed(q0);
+	\end{emp}
+	\end{center}
+	
+\end{itemize}
+
+\subsubsection*{Solution}
+
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-1.5u,0);
+	node.q1(); q1.c = (-.5u,0);
+	node.q2(); q2.c = (.5u,0);
+	node.q3(); q3.c = (1.5u,0);
+	node.q4(); q4.c = (2.5u,0);
+	edge(q0, q1, curve, ONE);
+	edge(q1, q2, curve, ONE);
+	edge(q2, q3, curve, ONE);
+	edge(q3, q4, curve, E);
+	loop(q0, down, ZERO);
+	loop(q1, down, ZERO);
+	loop(q2, down, ZERO);
+	loop(q3, down, SIGMA);
+	loop(q4, up, SIGMA);
+	makestart(q0);
+	drawboxed(q0,q1,q2,q3,q4);
+	\end{emp}
+	\end{center}
+
+\newpage
+
+\subsection*{Exercise 1.15 (7 points)}
+
+\subsubsection*{Problem}
+
+Give a counterexample to show that the following construction fails
+to prove Theorem~1.49, the closure of the class of regular languages
+under the star operation.%
+\footnote{In other words, you must present a finite automaton,
+$N_1$, for which the constructed automaton $N$ does not recognize
+the star of $N_1$'s language.}
+Let $N_1=(Q_1,\Sigma,\delta_1,q_1,F_1)$ recognize $A_1$. Construct
+$N=(Q_1,\Sigma,\delta,q_1,F)$ as follows. $N$ is supposed to
+recognize $A^*_1$.
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi}}
+\item The states of $N$ are the states of $N_1$.
+\item The start state of $N$ is the same as the start state of $N_1$.
+\item $F=\{q_1\}\cup F_1$.
+
+The accept states $F$ are the old accept states plus its start state.
+\item Define $\delta$ so that for any $q\in Q$ and any
+$a\in\Sigma_\varepsilon$,
+$$
+\delta(q,a)=
+\begin{cases}
+\delta_1(q,a) & q\notin F_1\text{ or }a\neq\varepsilon \\
+\delta_1(q,a)\cup\{q_1\} & q\in F_1\text{ and }a=\varepsilon.
+\end{cases}
+$$
+\end{enumerate}
+(Suggestion: Show this construction graphically, as in Figure~1.50.)
+
+\subsubsection*{Solution}
+
+\text Language $\{w:w$ contains at least three $a$s$\}$
+
+$N_1$
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-1.5u,0);
+	node.q1(); q1.c = (-.5u,0);
+	node.q2(); q2.c = (.5u,0);
+	node.q3(); q3.c = (1.5u,0);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, A);
+	edge(q2, q3, curve, A);
+	loop(q0, down, B);
+	loop(q1, down, B);
+	loop(q2, down, B);
+	loop(q3, down, SIGMA);
+	makestart(q0);
+	makefinal(q3);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+$N$
+	\begin{center}
+	\begin{emp}(0,0)
+	mediumnodes;
+	u:=1.5cm;
+	node.q0(); q0.c = (-1.5u,0);
+	node.q1(); q1.c = (-.5u,0);
+	node.q2(); q2.c = (.5u,0);
+	node.q3(); q3.c = (1.5u,0);
+	edge(q0, q1, curve, A);
+	edge(q1, q2, curve, A);
+	edge(q2, q3, curve, A);
+	edge(q3, q0, -45, E);
+	loop(q0, down, B);
+	loop(q1, down, B);
+	loop(q2, down, B);
+	loop(q3, down, SIGMA);
+	makestart(q0);
+	makefinal(q0);
+	makefinal(q3);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+$N$ fails on strings such as \{b\}, \{b,b\}, \{b,b,b\}. 
+
+\subsection*{Exercise 1.16 (7 points)}
+
+\subsubsection*{Problem}
+
+Use the construction given in Theorem~1.39 to convert the following
+two nondeterministic finite automata to equivalent deterministic
+finite automata.
+
+\begin{center}
+\begin{tabular}{cc}
+\begin{emp}(0,0)
+  bignodes;
+  u := 1.5cm;
+  node.a1("1"); a1.c=(0,0);
+  node.a2("2"); a2.c=(0,-u);
+  makestart(a1); makefinal(a1);
+  drawboxed(a1,a2);
+  edge(a1,a2,curve,AB);
+  edge(a2,a1,curve,B);
+  loop(a1,right,A);
+\end{emp}
+&
+\qquad\begin{emp}(0,0)
+  bignodes;
+  u := 1.5cm;
+  s := u*sqrt(2);
+  node.b1("1"); b1.c=(0,0);
+  node.b2("2"); b2.c=(s,0);
+  node.b3("3"); b3.c=(.5s,-u);
+  makestart(b1); makefinal(b2);
+  drawboxed(b1,b2,b3);
+  edge(b1,b2,curve,E);
+  edge(b2,b1,curve,A);
+  edge(b1,b3,right,A);
+  edge(b3,b2,right,AB);
+  loop(b3,right,B);
+\end{emp}
+\\
+\textbf{(a)} & \qquad\textbf{(b)}
+\end{tabular}
+\end{center}
+
+\subsubsection*{Solution}
+
+\textbf{(a)}
+
+	\begin{center}
+	\begin{emp}(0,0)
+	bignodes;
+	u:=1.5cm;
+	node.q0("1"); q0.c = (-1.5u,0);
+	node.q1("12"); q1.c = (-.5u,0);
+	node.q2("2"); q2.c = (.5u,0);
+	node.q3(EMPTYSET); q3.c = (1.5u,0);
+	edge(q0, q1, curve, A);
+	edge(q0, q2, 45, B);
+	edge(q2, q0, -75, B);
+	edge(q2, q3, curve, A);
+	loop(q1, down, SIGMA);
+	loop(q3, down, SIGMA);
+	makestart(q0);
+	makefinal(q0);
+	makefinal(q1);
+	drawboxed(q0,q1,q2,q3);
+	\end{emp}
+	\end{center}
+
+\textbf{(b)}
+
+	\begin{center}
+	\begin{emp}(0,0)
+	bignodes;
+	u:=1.5cm;
+	node.q0("1"); q0.c = (-2u,0);
+	node.q1("2"); q1.c = (-.5u,0);
+	node.q2("3"); q2.c = (1.5u,0);
+	node.q3("12"); q3.c = (-2u,-2u);
+	node.q4("13"); q4.c = (-.5u,-2u);
+	node.q5("23"); q5.c = (1.5u,-2u);
+	node.q6(EMPTYSET); q6.c = (-3.5u,-u);
+	edge(q0, q2, curve, A);
+	edge(q0, q6, -45, B);
+	edge(q1, q6, curve, B);
+	edge(q1, q3, curve, A);
+	
+	edge(q2, q1, curve, A);
+	edge(q2, q5, curve, B);
+	edge(q3, q6, curve, B);
+	edge(q3, q4, curve, A);
+	
+	edge(q4, q5, curve, SIGMA);
+	edge(q5, q3, 45, A);
+	edge(q5, q2, curve, B);
+
+	loop(q6, left, SIGMA);
+	makestart_top(q0);
+	makefinal(q1);
+	makefinal(q3);
+	makefinal(q5);
+	drawboxed(q0,q1,q2,q3,q4,q5,q6);
+	\end{emp}
+	\end{center}
+	
+\end{empfile}
+\immediate\write18{mpost -tex=latex \jobname}
+\end{document}
