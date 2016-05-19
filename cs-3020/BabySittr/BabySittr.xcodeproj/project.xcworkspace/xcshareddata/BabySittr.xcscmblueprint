@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F92F7EFEF2AADB3A381C12AB3AE66107229604E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A93B6FDB52E24310A18B65468C6653B263EC3AAC" : 0,
+    "F92F7EFEF2AADB3A381C12AB3AE66107229604E7" : 0,
+    "CE9EEFB0354A511A9AB598FC9E8DC6498A266B8F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CEC083B0-77F0-4BC2-B1ED-90F89C236E1D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A93B6FDB52E24310A18B65468C6653B263EC3AAC" : "hackingWithSwiftContent\/HackingWithSwift\/",
+    "F92F7EFEF2AADB3A381C12AB3AE66107229604E7" : "School\/",
+    "CE9EEFB0354A511A9AB598FC9E8DC6498A266B8F" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BabySittr",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "cs-3020\/BabySittr\/BabySittr.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/twostraws\/HackingWithSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A93B6FDB52E24310A18B65468C6653B263EC3AAC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:zlarsen\/codeCamp2015.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CE9EEFB0354A511A9AB598FC9E8DC6498A266B8F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ZachCustomBit\/School.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F92F7EFEF2AADB3A381C12AB3AE66107229604E7"
+    }
+  ]
+}
